@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Alert } from "react-native";
+import { View, Text, Alert, Image ,Pressable, FlatList } from "react-native";
+import { Link } from "expo-router";
 
 export default function HomePage() {
   const [pokemonEntries, setPokemonEntries] = useState([]);
@@ -19,7 +20,9 @@ export default function HomePage() {
 
   return (
     <View>
-      <Text>Home Page</Text>
+      <FlatList 
+        data={pokemonEntries}
+        renderItem={({item: pokemon}) =>  <PokemonItem {...pokemon}/>}/>
     </View>
   );
 }
@@ -65,4 +68,36 @@ async function handleFetchPokemonInfo(url) {
   }
 }
 
-function PokemonItem() {}
+function PokemonItem({name, sprite, types, hp, attack, defense}) {
+  // console.log(sprite)
+  return (
+    <Link href="/{name}" asChild>
+      <Pressable>
+        <View>
+          <Image 
+            style={{width: 100, height: 100}}
+            source={{uri: sprite}}/>
+          <View>
+            <Text>{name}</Text>
+            {types.map(type => {
+              return <Text key={type}>{type}</Text>
+            })}
+          </View>
+        </View>
+          <View>
+            <Text>HP</Text>
+            <Text>{hp}</Text>
+          </View>
+          <View>
+            <Text>Attack</Text>
+            <Text>{attack}</Text>
+          </View>
+          <View>
+            <Text>Defense</Text>
+            <Text>{defense}</Text>
+          </View>
+        <View />
+      </Pressable>
+    </Link>
+  )
+}

@@ -7,9 +7,18 @@ const theme = {
     whiteColor: "#f0f0f0",
     blackColor: "#000",
   },
+  fontSizes: {
+    body: 14,
+    subheading: 16,
+    heading: 18
+  },
   fonts: {
     main: "System",
   },
+  fontWeights: {
+    normal: '400',
+    bold: '700'
+  }
 };
 
 export default theme;
