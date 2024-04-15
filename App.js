@@ -1,13 +1,12 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View } from 'react-native'
-import { NativeRouter, Route, Link } from 'react-router-native'
+import Main from './app/views/Main'
 
 export default function App () {
   return (
-    <NativeRouter>
-      <View>Hello</View>
-    </NativeRouter>
+      <Main />
   )
 }
 
